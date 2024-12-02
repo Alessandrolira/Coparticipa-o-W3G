@@ -40,6 +40,32 @@ function gerarPDF() {
 
 //DADOS
 const valoresProcedimentos = {
+    Alice: {
+        Equilíbrio: {
+            Consulta: 45,
+            Exames_Especiais: 90,
+            Exames_Simples: 10,
+            Internação: 210,
+            Pronto_Socorro: 60,
+            Terapia: 35
+        },
+        Conforto: {
+            Consulta: 70,
+            Exames_Especiais: 100,
+            Exames_Simples: 15,
+            Internação: 280,
+            Pronto_Socorro: 70,
+            Terapia: 45
+        },
+        Exclusivo: {
+            Consulta: 100,
+            Exames_Especiais: 150,
+            Exames_Simples: 30,
+            Internação: 440,
+            Pronto_Socorro: 110,
+            Terapia: 60
+        }
+    },
     Amil: {
         Amil_Fácil_110: {
             Consulta: 25,
@@ -99,7 +125,7 @@ const valoresProcedimentos = {
         }
     },
     Bradesco: {
-        FECXbFCER_E_e_FQCXbFCQR_A_: {
+        FECXespcFCER_E_e_FQCXespcFCQR_A_: {
             Consulta: 30,
             Exames_Especiais: 120,
             Exames_Simples: 45,
@@ -107,7 +133,7 @@ const valoresProcedimentos = {
             Pronto_Socorro: 90,
             Terapia: 30
         },
-        TN1IbTERI_E_e_TN2IbTQRI_A_: {
+        TN1IespcTERI_E_e_TN2IespcTQRI_A_: {
             Consulta: 35,
             Exames_Especiais: 140,
             Exames_Simples: 52.50,
@@ -115,7 +141,7 @@ const valoresProcedimentos = {
             Pronto_Socorro: 105,
             Terapia: 35
         },
-        TENMbTRME_E_e_TQNMbTRMQ_A_: {
+        TENMespcTRME_E_e_TQNMespcTRMQ_A_: {
             Consulta: 30,
             Exames_Especiais: 120,
             Exames_Simples: 45,
@@ -139,7 +165,7 @@ const valoresProcedimentos = {
             Pronto_Socorro: 320,
             Terapia: 160
         },
-        TNEWbTRWE_E_e_TNQWbTRWQ_A_: {
+        TNEWespcTRWE_E_e_TNQWespcTRWQ_A_: {
             Consulta: 30,
             Exames_Especiais: 120,
             Exames_Simples: 45,
@@ -513,15 +539,59 @@ const valoresProcedimentos = {
             Pronto_Socorro: 350,
             Terapia: 150
         }
+    },
+    NotreDame_Intermedica: {
+        Ambulatorial: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
+            Internação: 185,
+            Pronto_Socorro: 53,
+            Terapia: 37.01
+        },
+        Smart_150_ao_200_UP: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
+            Internação: 185,
+            Pronto_Socorro: 53,
+            Terapia: 37.01
+        },
+        Smart_300_ao_500: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
+            Internação: 260,
+            Pronto_Socorro: 53,
+            Terapia: 37.01
+        },
+        Advance_600_e_700: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
+            Internação: 310,
+            Pronto_Socorro: 53,
+            Terapia: 37.01
+        },
+        Premium_900: {
+            Consulta: 37.01,
+            Exames_Especiais: 106,
+            Exames_Simples: 15.90,
+            Internação: 540,
+            Pronto_Socorro: 53,
+            Terapia: 37.01
+        }
     }
 }
 
 const planosPorOperadora = {
+    Alice: ["Equilíbrio", "Conforto", "Exclusivo"],
     Amil: ["Amil_Fácil_110", "Amil_Fácil_S60_e_S80", "Amil_One_S2500", "Amil_One_S6500_R1", "Amil_S380", "Amil_S450_e_S580", "Amil_S750"],
-    Bradesco: ["FECXbFCER_E_e_FQCXbFCQR_A_", "TN1IbTERI_E_e_TN2IbTQRI_A_", "TENMbTRME_E_e_TQNMbTRMQ_A_", "TNNI_E_TNMI_A_TNMM_A_e_TNMN_A_", "TPN4_A_TPN6_A_e_TCN6_A_e_TCN8_A_e_TPN8_A_e_TCNX_A_", "TNEWbTRWE_E_e_TNQWbTRWQ_A_"],
+    Bradesco: ["FECXespcFCER_E_e_FQCXespcFCQR_A_", "TN1IespcTERI_E_e_TN2IespcTQRI_A_", "TENMespcTRME_E_e_TQNMespcTRMQ_A_", "TNNI_E_TNMI_A_TNMM_A_e_TNMN_A_", "TPN4_A_TPN6_A_e_TCN6_A_e_TCN8_A_e_TPN8_A_e_TCNX_A_", "TNEWespcTRWE_E_e_TNQWespcTRWQ_A_"],
     Porto: ["LINHA_PORTO_SAUDE_P200", "LINHA_PORTO_SAUDE_P300", "LINHA_PORTO_SAUDE_P400", "LINHA_PORTO_SAUDE_P450", "LINHA_PORTO_SAUDE_P500", "LINHA_TRADICIONAL_Bronze", "LINHA_TRADICIONAL_Prata", "LINHA_TRADICIONAL_Ouro_Mais", "LINHA_TRADICIONAL_Ouro_Max", "LINHA_TRADICIONAL_Diamante_R1", "LINHA_TRADICIONAL_Diamante_R2", "LINHA_PRO_Bronze_Pro", "LINHA_PRO_Diamente_Pro", "LINHA_PRO_Ouro_Pro", "LINHA_PRO_Prata_Pro",],
     Unimed: ["COMPACTO", "COMPLETO", "EFETIVO", "SÊNIOR", "SUPERIOR", "SUPERIOR_PLUS"],
-    Sulamerica: ["Clássico", "Direto", "Especial", "Exato", "Executivo", "Prestigie"]
+    Sulamerica: ["Clássico", "Direto", "Especial", "Exato", "Executivo", "Prestigie"],
+    NotreDame_Intermedica: ["Ambulatorial", "Smart_150_ao_200_UP", "Smart_300_ao_500", "Advance_600_e_700", "Premium_900"]
 }
 
 const porcentagens = {
@@ -571,7 +641,7 @@ function mostrarPlanos() {
         planoElement.value = plano;
         planoElement.id = plano;
         planoElement.onchange = mostrarPorcentagem;
-        plano = plano.replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/")
+        plano = plano.replace(/_/g, " ").replace(" por cento", "%").replace(/espc/g, "/")
         const label = document.createElement("label");
         label.htmlFor = plano;
         label.className = "checkboxLabel"
@@ -855,14 +925,61 @@ function EnviarDados() {
 
             TotalGasto = parseFloat(valorPagoConsulta) + parseFloat(valorPagoExamesEspeciais) + parseFloat(valorPagoExamesSimples) + parseFloat(valorPagoInternacao) + parseFloat(valorPagoProntoSocorro) + parseFloat(valorPagoTerapias);
 
-            document.getElementById('tabelas' + contar_porcentagem).innerHTML = `
+            let atingiuLimitador = false
+
+            if (resultado.operadora.replace(/_/g, " ") == "Seguros Unimed"){
+
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "COMPACTO"){
+                    if (TotalGasto > 350.00) {
+                        TotalGasto = 350.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "COMPLETO"){
+                    if (TotalGasto > 400.00) {
+                        TotalGasto = 400.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "EFETIVO"){
+                    if (TotalGasto > 350.00) {
+                        TotalGasto = 350.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SÊNIOR"){
+                    if (TotalGasto > 680.00) {
+                        TotalGasto = 680.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SUPERIOR"){
+                    if (TotalGasto > 450.00) {
+                        TotalGasto = 450.00
+                        atingiuLimitador = true
+                    }
+                }
+                if(checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/") == "SUPERIOR PLUS"){
+                    if (TotalGasto > 530.00) {
+                        TotalGasto = 530.00
+                        atingiuLimitador = true
+                    }
+                }
+            }
+
+            let HTML = `
                     <table class="TabelaValores--Operadora">
                             <div class="cabecalho-tabela">
                                 <div class="cabecalho-tabela-texto">
                                     <h1 class="Titulo__tabela-Operadora">${resultado.operadora.replace(/_/g, " ")}</h1>
-                                    <h2 class="Titulo__tabela-Plano">${checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/b/g, "/")}</h2>
+                                    <h2 class="Titulo__tabela-Plano">${checkedValues[x].replace(/_/g, " ").replace(" por cento", "%").replace(/espc/g, "/")}</h2>
                                 </div>
-                                <h1 class="valorTotalGasto">Total Gasto: R$ ${TotalGasto.toFixed(2).replace(".", ",")}</h1>
+                                <div id="limitadorMensal">
+                                    ${atingiuLimitador == true? 
+                                    '<h1 class="valorTotalGasto" style="color: red; text-align: right; display: block;" id="limitador">Limitador Mensal</h1>' 
+                                    : ''}
+                                    <h1 class="valorTotalGasto">Total Gasto: R$ ${TotalGasto.toFixed(2).replace(".", ",")}</h1>
+                                </div>
                             </div>
                             <tr class="
                             ">
@@ -935,10 +1052,14 @@ function EnviarDados() {
             contar_porcentagem = contar_porcentagem + 1
             tabelasAnteriores = checkedValues
             porcentagemAnteriores = checkedValuesPlanos
+
+            console.log(resultado.operadora.replace(/_/g, " "))
+
+            //Ta gerando na hora errada
+
+            document.getElementById('tabelas' + contar_porcentagem).innerHTML = HTML
     }
 }
-
-
 
 function VerificaSeENumero(valor) {
     if (isNaN(valor)) {
@@ -947,8 +1068,6 @@ function VerificaSeENumero(valor) {
         return false
     }
 }
-
-
 
 // Exemplo de uso:
 const plano = 'FCEX_E_e_FCQX_A_';
